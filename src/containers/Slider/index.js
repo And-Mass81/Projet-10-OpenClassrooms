@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useData } from "../../contexts/DataContext";
 import { getMonth } from "../../helpers/Date";
 
@@ -27,10 +27,9 @@ const Slider = () => {
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => ( // this event is an index  from focus not from object event itself
-        <>
+        <Fragment key={event.title}>
           <div
-            key={event.length}
-            className={`SlideCard SlideCard--${
+              className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
           >
@@ -47,7 +46,7 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {byDateDesc.map((_, radioIdx) => (
                 <input
-                  key={`${_.title}`} // change envent.id for _ .title becouse we need the number of index of focus
+                  key={`${_.title}`} // change envent.id for _ .title 
                   type="radio"
                   name="radio-button"
                   checked={index === radioIdx} // i need the number of index of the state
@@ -56,7 +55,7 @@ const Slider = () => {
               ))}
             </div>
           </div>
-        </>
+        </Fragment>
       ))}
     </div>
   );

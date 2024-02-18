@@ -17,19 +17,18 @@ const EventList = () => {
     (!type  // if diferent of type get all events
       ? data?.events
       : data?.events.filter((index) => index.type === type)) || [] // i need to get the type of the event from the data to compare to setType (input from <Select/>)
-  ).slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
-    /* ).filter((event, index) => {
-    console.log(index,event)
+  ).filter((event, index) => {
+    // console.log(index,event)
     if(
     (currentPage - 1) * PER_PAGE <= index &&
     PER_PAGE * currentPage > index
     ) {
-    console.log('ok')
+    // console.log('ok')
     return true;
     }
     return false;
-    }); */
-
+    }); 
+  // console.log(filteredEvents);
   const changeType = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
